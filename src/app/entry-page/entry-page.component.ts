@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionService } from '../services/action.service';
+
 
 @Component({
   selector: 'app-entry-page',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private actionService: ActionService) { }
 
   ngOnInit() {
+    this.actionService.getComments('https://jsonplaceholder.typicode.com/posts')
+    .subscribe( res => {
+      console.log(res);
+    });
   }
 
 }
