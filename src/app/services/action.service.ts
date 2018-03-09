@@ -7,7 +7,6 @@ import { DataService } from './data.service';
 
 @Injectable()
 export class ActionService {
-  private apiUrl: string  = environment.apiEndpoint;
   constructor(private dataService: DataService) { }
 
   getComments(url): Observable<any> {

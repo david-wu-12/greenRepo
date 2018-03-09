@@ -1,3 +1,23 @@
-<p>
-  entry-page works!
-</p>
+<form #userForm="ngForm">
+  <div class="modal-body">
+      <div class="form-group row">
+          <div class="col-sm-6">
+              <label class="form-control-label" id="mynameLabel">Name <span class="text-danger">*</span></label>
+              <input type="text" name="userName" class="input-field form-control" id="addUserName" placeholder="" required maxlength="255">
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer clearfix">
+      <a href="#" class="btn btn-secondary primary-link pull-left" data-dismiss="modal">Cancel</a>
+      <button type="button" class="btn btn-nv-primary pull-right">Save</button>
+  </div>
+</form>
+<ul>
+    <div *ngFor="let course of coursesObservable | async">
+            <h3><a href="#">{{course.title}}</a> </h3>
+            <p>{{course.description}}</p>
+            <div>
+                <a href="{{course.url}}" target="_blank" class="btn btn-danger">Go To Course</a>
+            </div>
+    </div>
+</ul>
