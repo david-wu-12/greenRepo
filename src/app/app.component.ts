@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  mode_var = 'slide';
+  private _opened: any = false;
+
+  private _toggleSidebar() {
+    this._opened = !this._opened;
+  }
 }

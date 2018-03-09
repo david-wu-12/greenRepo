@@ -1,3 +1,22 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<router-outlet></router-outlet>
+<ng-sidebar-container style="height: 100vh;">
 
+        <!-- A sidebar -->
+        <ng-sidebar [(opened)]="_opened" [mode]="mode_var" [closeOnClickOutside]="true">
+                <div role="complementary" class="demo-sidebar ng-sidebar ng-sidebar--opened ng-sidebar--left ng-sidebar--over ng-sidebar--animate" aria-hidden="false" aria-label="My sidebar" style="">
+                        <hr>
+                        <p>Planning</p>
+                        <hr>
+                        <p>Fieldwork</p>
+                        <hr>
+                        <p>Reporting</p>
+                        <hr>
+                </div>        
+                </ng-sidebar>
+  
+        <!-- Page content -->
+        <div ng-sidebar-content>
+          <app-header (showNav)="_toggleSidebar()"></app-header>
+          <router-outlet></router-outlet>
+        </div>
+  
+</ng-sidebar-container>

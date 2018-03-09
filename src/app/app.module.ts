@@ -12,12 +12,15 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { HeaderComponent } from './header/header.component';
+import { SidebarModule } from 'ng-sidebar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EntryPageComponent
+    EntryPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    SidebarModule.forRoot(),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule
