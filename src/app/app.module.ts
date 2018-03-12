@@ -14,16 +14,21 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HeaderComponent } from './header/header.component';
 import { SidebarModule } from 'ng-sidebar';
+import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'angular-calendar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EntryPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    HorizontalTimelineComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     routing,
     HttpClientModule,
     FormsModule,
@@ -31,7 +36,9 @@ import { SidebarModule } from 'ng-sidebar';
     SidebarModule.forRoot(),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CalendarModule.forRoot()
+
   ],
   providers: [
     DataService,
