@@ -66,6 +66,13 @@ export class EntryPageComponent implements OnInit {
 
   events: CalendarEvent[] = [
     {
+      start: subDays(endOfMonth(new Date()), 3),
+      end: addDays(endOfMonth(new Date()), 3),
+      title: 'A long event that spans 2 months',
+      color: this.colors.blue
+    },
+    ,
+    {
       title: 'Editable event',
       color: this.colors.yellow,
       start: new Date(),
