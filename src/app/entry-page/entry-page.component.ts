@@ -6,7 +6,16 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { TimelineElement } from '../horizontal-timeline/timeline-element';
 import { CalendarEvent } from 'angular-calendar';
-
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours
+} from 'date-fns';
 
 @Component({
   selector: 'app-entry-page',
@@ -90,6 +99,9 @@ export class EntryPageComponent implements OnInit {
     }
   ];
 
+  activeDayIsOpen: any = true;
+
+
   constructor(private actionService: ActionService, private db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -105,5 +117,18 @@ export class EntryPageComponent implements OnInit {
     });
   }
 
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
+    }
+  }
 
 }

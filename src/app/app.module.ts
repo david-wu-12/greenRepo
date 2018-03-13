@@ -17,6 +17,9 @@ import { SidebarModule } from 'ng-sidebar';
 import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
+import { CalendarCommonModule } from 'angular-calendar';
+import { CalendarMonthModule } from 'angular-calendar';
+import { DemoUtilsModule } from '../demo-utils/module';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { CalendarModule } from 'angular-calendar';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    CalendarCommonModule,
+    CalendarMonthModule,
+    DemoUtilsModule
 
   ],
   providers: [
