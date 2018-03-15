@@ -2,8 +2,8 @@
         <h2>Launchpad</h2>
 </div>
 <div class="row mr-1 ml-1">
-    <div class="mt-2 col-sm-5">   
-                <mwl-demo-utils-calendar-header
+    <div class="mt-2 col-sm-4" style="height:300px">   
+              <mwl-demo-utils-calendar-header
                 [(view)]="view"
                 [(viewDate)]="viewDate">
               </mwl-demo-utils-calendar-header>
@@ -27,8 +27,19 @@
                   [events]="events">
                 </mwl-calendar-day-view>
               </div>
+              <div class="mt-5 border" style="width:100%; height:200px">
+                <h2 class="border" style="background-color: #ADD8E6">Document Deliverables</h2>
+                <div>
+                  <ul style="font-size:20px">
+                    <li>REPORT 1</li>
+                    <li>REPORT 2</li>
+                    <li>REPORT 3</li>
+                  </ul>
+                </div>
+              </div>
+
     </div>
 
-    <horizontal-timeline class="col-sm-7" [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
+    <horizontal-timeline class="col-sm-8" [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
     
 </div>
