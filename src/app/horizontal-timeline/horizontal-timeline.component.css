@@ -25,7 +25,6 @@ ol, ul {
   position: relative;
   height: 100px;
   width: 90%;
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -264,7 +263,6 @@ ol, ul {
 }
 
 .cd-horizontal-timeline .events-content li > * {
-  max-width: 800px;
   margin: 0 auto;
 }
 
