@@ -108,6 +108,8 @@ export class EntryPageComponent implements OnInit {
 
   activeDayIsOpen: any = true;
 
+  deliverableList: any;
+
 
   constructor(private actionService: ActionService, private db: AngularFireDatabase) { }
 
@@ -116,6 +118,30 @@ export class EntryPageComponent implements OnInit {
     // .subscribe( res => {
     //   console.log(res);
     // });
+
+    this.deliverableList = [
+      {
+        name: 'Document A',
+      },
+      {
+        name: 'Document B',
+      },
+      {
+        name: 'Document B',
+      },
+      {
+        name: 'Document B',
+      },
+      {
+        name: 'Document B',
+      },
+      {
+        name: 'Document B',
+      },
+      {
+        name: 'Document C',
+      }
+    ];
 
     this.coursesObservable = this.db.list('courses').valueChanges();
     console.log(this.coursesObservable);
@@ -136,6 +162,22 @@ export class EntryPageComponent implements OnInit {
         this.viewDate = date;
       }
     }
+  }
+
+  addDelive(newD) {
+    console.log(newD.value);
+    const newDel = {
+      name: newD.value
+    };
+    this.deliverableList.push(newDel);
+    newD.value = '';
+  }
+
+  removeDeliv(delD) {
+    console.log(delD);
+    const indexTodelete = this.deliverableList.findIndex( d => d.name === delD );
+    console.log(indexTodelete);
+    this.deliverableList.splice(indexTodelete, 1);
   }
 
 }
