@@ -75,7 +75,7 @@ export class HorizontalTimelineComponent implements AfterViewInit {
   constructor(private _cdr: ChangeDetectorRef) {
   }
 
-  private _timelineWrapperWidth = 720;
+  private _timelineWrapperWidth = 1936;
 
   @Input()
   set timelineWrapperWidth(value: number) {

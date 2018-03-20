@@ -43,6 +43,9 @@ export class EntryPageComponent implements OnInit {
     { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
     { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
     { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
+    { caption: '10 Dec', date: new Date(2016, 12, 10), title: 'Event title here', content: this.content },
+    { caption: '29 Jan', date: new Date(2017, 1, 19), title: 'Event title here', content: this.content },
+    { caption: '3 Mar', date: new Date(2018, 3, 3), title: 'Event title here', content: this.content },
   ];
 
   colors: any = {
