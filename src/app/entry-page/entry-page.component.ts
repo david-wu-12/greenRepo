@@ -124,24 +124,31 @@ export class EntryPageComponent implements OnInit {
 
     this.deliverableList = [
       {
+        id: 1,
         name: 'Document A',
       },
       {
+        id: 2,
         name: 'Document B',
       },
       {
+        id: 3,
+        name: 'Document D',
+      },
+      {
+        id: 4,
         name: 'Document B',
       },
       {
+        id: 5,
+        name: 'Document D',
+      },
+      {
+        id: 6,
         name: 'Document B',
       },
       {
-        name: 'Document B',
-      },
-      {
-        name: 'Document B',
-      },
-      {
+        id: 7,
         name: 'Document C',
       }
     ];
@@ -178,7 +185,7 @@ export class EntryPageComponent implements OnInit {
 
   removeDeliv(delD) {
     console.log(delD);
-    const indexTodelete = this.deliverableList.findIndex( d => d.name === delD );
+    const indexTodelete = this.deliverableList.findIndex( d => d.id === delD );
     console.log(indexTodelete);
     this.deliverableList.splice(indexTodelete, 1);
   }

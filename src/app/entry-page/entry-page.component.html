@@ -37,7 +37,7 @@
                 <input #newDeliverable style="float:right" type="text" name="fname"></span></h2>
             <ul class="ml-5 pb-2">
               <li  *ngFor="let deliverable of deliverableList" style="font-size:20px" class="pt-3">{{deliverable.name}}
-                <span (click)="removeDeliv(deliverable.name)" class="ml-3"><i class="fa fa-times" aria-hidden="true"></i>
+                <span (click)="removeDeliv(deliverable.id)" class="ml-3"><i class="fa fa-times" aria-hidden="true"></i>
               </span></li>
             </ul>
           </div>

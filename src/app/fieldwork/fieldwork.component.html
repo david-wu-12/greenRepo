@@ -31,11 +31,47 @@
             [events]="events">
           </mwl-calendar-day-view>
         </div>
-        <div class="mt-5 border mb-5" style="width:100%; height:200px">
-          <h2 class="border" style="background-color: #ADD8E6"><span class="m-3">Document Request List</span></h2>
-          <div>
-            <table>
-              <tr>
+        <div class="mt-5 mb-5" style="width:100%; height:auto; overflow:auto">
+          <h2 style="background-color: #ADD8E6"><span class="m-3">Document Request List</span></h2>
+          <div style="width:100%; height:auto">
+              <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="addForm(docTable)">Add Document</button>
+              <br>
+              <form #docTable="ngForm" >
+                  <table class="m-5" style="table-layout:fixed">
+                      <tr>
+                        <th>Ref#</th>
+                        <th>Related System</th>
+                        <th>Related Control</th>
+                        <th>Control Name</th>
+                        <th>Document Reuqest</th>
+                        <th>Type of Evidence</th>
+                        <th>Owner</th>
+                        <th>Date Requested</th>
+                        <th>Date Due</th>
+                        <th>Status</th>
+                        <th>Comments</th>
+                      </tr>
+                      <tr>
+                        <td><input type="text" class="form-control" name="ref" ngModel/></td>
+                        <td><input type="text" class="form-control" name="relSys" ngModel /></td>
+                        <td><input type="text" class="form-control" name="relCon" ngModel/></td>
+                        <td><input type="text" class="form-control" name="conName" ngModel/></td>
+                        <td><input type="text" class="form-control" name="docReq" ngModel /></td>
+                        <td><input type="text" class="form-control" name="toe" ngModel/></td>
+                        <td><input type="text" class="form-control" name="owner" ngModel/></td>
+                        <td><input type="text" class="form-control" name="dateReq" ngModel/></td>
+                        <td><input type="text" class="form-control" name="dateDue" ngModel/></td>
+                        <td><input type="text" class="form-control" name="status" ngModel/></td>
+                        <td><input type="text" class="form-control" name="comment" ngModel/></td>
+                      </tr>
+                      
+                    </table>
+
+              </form>
+
+          </div>
+          <table class="m-5 table" style="width:97%">
+              <tr style="height: 30px">
                 <th>Ref#</th>
                 <th>Related System</th>
                 <th>Related Control</th>
@@ -47,113 +83,27 @@
                 <th>Date Due</th>
                 <th>Status</th>
                 <th>Comments</th>
+                <th>Delete Document Request</th>
               </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
+              <tr *ngFor="let doc of docRequestlist" class="border-bottom border-top" >
+                <td>{{doc.Ref}}</td>
+                <td>{{doc.RelatedSystem}}</td>
+                <td>{{doc.RelatedControl}}</td>
+                <td>{{doc.ControlName}}</td>
+                <td>{{doc.DocumentReuqest}}</td>
+                <td>{{doc.TypeofEvidence}}</td>
+                <td>{{doc.Owner}}</td>
+                <td>{{doc.DateRequested}}</td>
+                <td>{{doc.DateDue}}</td>
+                <td>{{doc.Status}}</td>
+                <td>{{doc.Comments}}</td>
+                <td (click)="removeDoc(doc)"><i class="fa fa-times" aria-hidden="true"></i></td>
               </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
-              <tr>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-                <td><input type="text" class="form-control" /></td>
-              </tr>
+              
+              
             </table>
-          </div>
+
+
         </div>
 
 </div>

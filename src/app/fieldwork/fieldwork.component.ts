@@ -108,6 +108,50 @@ export class FieldworkComponent implements OnInit {
 
   activeDayIsOpen: any = true;
 
+  docRequestlist = [
+    {
+      Ref: '10',
+      RelatedSystem: 'AD',
+      RelatedControl: 'IT ELC-01',
+      ControlName: 'IT POLICIES',
+      DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are' 
+      + 'communicated to employees and/or accessible via a central repository',
+      TypeofEvidence: 'System-generated',
+      Owner: 'Tom Brady',
+      DateRequested: '12/12/2012',
+      DateDue: '12/12/2020',
+      Status: 'Pending',
+      Comments: 'there are no comments',
+   },
+    {
+      Ref: '10',
+      RelatedSystem: 'AD',
+      RelatedControl: 'IT ELC-01',
+      ControlName: 'IT POLICIES',
+      DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are' 
+      + 'communicated to employees and/or accessible via a central repository',
+      TypeofEvidence: 'System-generated',
+      Owner: 'Tom Brady',
+      DateRequested: '12/12/2012',
+      DateDue: '12/12/2020',
+      Status: 'Pending',
+      Comments: 'there are no comments',
+    },
+    {
+      Ref: '10',
+      RelatedSystem: 'AD',
+      RelatedControl: 'IT ELC-01',
+      ControlName: 'IT POLICIES',
+      DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are' 
+      + 'communicated to employees and/or accessible via a central repository',
+      TypeofEvidence: 'System-generated',
+      Owner: 'Tom Brady',
+      DateRequested: '12/12/2012',
+      DateDue: '12/12/2020',
+      Status: 'Pending',
+      Comments: 'there are no comments',
+    },
+  ];
 
   constructor(private actionService: ActionService, private db: AngularFireDatabase) { }
 
@@ -136,6 +180,82 @@ export class FieldworkComponent implements OnInit {
         this.viewDate = date;
       }
     }
+  }
+
+  addForm(formToAdd: NgForm) {
+    console.log(formToAdd);
+    const newDoc = {
+      Ref: 'N/A',
+      RelatedSystem: 'N/A',
+      RelatedControl: 'N/A',
+      ControlName: 'N/A',
+      DocumentReuqest: 'N/A',
+      TypeofEvidence: 'N/A',
+      Owner: 'N/A',
+      DateRequested: 'N/A',
+      DateDue: 'N/A',
+      Status: 'N/A',
+      Comments: 'N/A',
+    };
+    if ( !(formToAdd.value.comment.trim() === '') ) {
+      newDoc.Comments = formToAdd.value.comment.trim();
+      formToAdd.controls.comment.setValue('');
+    }
+    if ( !(formToAdd.value.conName.trim() === '') ) {
+      newDoc.ControlName = formToAdd.value.conName.trim();
+      formToAdd.controls.conName.setValue('');
+    }
+    if ( !(formToAdd.value.dateDue.trim() === '') ) {
+      newDoc.DateDue = formToAdd.value.dateDue.trim();
+      formToAdd.controls.dateDue.setValue('');
+    }
+    if ( !(formToAdd.value.dateReq.trim() === '') ) {
+      newDoc.DateRequested = formToAdd.value.dateReq.trim();
+      formToAdd.controls.dateReq.setValue('');
+
+    }
+    if ( !(formToAdd.value.docReq.trim() === '') ) {
+      newDoc.DocumentReuqest = formToAdd.value.docReq.trim();
+      formToAdd.controls.docReq.setValue('');
+
+    }
+    if ( !(formToAdd.value.owner.trim() === '') ) {
+      newDoc.Owner = formToAdd.value.owner.trim();
+      formToAdd.controls.owner.setValue('');
+
+    }
+    if ( !(formToAdd.value.ref.trim() === '') ) {
+      newDoc.Ref = formToAdd.value.ref.trim();
+      formToAdd.controls.ref.setValue('');
+
+    }
+    if ( !(formToAdd.value.relCon.trim() === '') ) {
+      newDoc.RelatedControl = formToAdd.value.relCon.trim();
+      formToAdd.controls.relCon.setValue('');
+
+    }
+    if ( !(formToAdd.value.relSys.trim() === '') ) {
+      newDoc.RelatedSystem = formToAdd.value.relSys.trim();
+      formToAdd.controls.relSys.setValue('');
+
+    }
+    if ( !(formToAdd.value.status.trim() === '') ) {
+      newDoc.Status = formToAdd.value.status.trim();
+      formToAdd.controls.status.setValue('');
+
+    }
+    if ( !(formToAdd.value.toe.trim() === '') ) {
+      newDoc.TypeofEvidence = formToAdd.value.toe.trim();
+      formToAdd.controls.toe.setValue('');
+
+    }
+    this.docRequestlist.push(newDoc);
+  }
+
+  removeDoc(doc) {
+    const indexToRemove = this.docRequestlist.findIndex(d => d.Ref === doc.Ref);
+    this.docRequestlist.splice(indexToRemove, 1);
+
   }
 
 }
