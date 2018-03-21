@@ -32,20 +32,15 @@ export class EntryPageComponent implements OnInit {
   quisquam, quae, temporibus dolores porro doloribus.`;
 
   timeline: TimelineElement[] = [
-    { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content },
-    { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
-    { caption: '20 Mar', date: new Date(2014, 3, 20), title: 'Event title here', content: this.content },
-    { caption: '20 May', date: new Date(2014, 5, 20), title: 'Event title here', content: this.content },
-    { caption: '09 Jul', date: new Date(2014, 7, 9), title: 'Event title here', content: this.content },
-    { caption: '30 Aug', date: new Date(2014, 8, 30), title: 'Event title here', content: this.content },
-    { caption: '15 Sep', date: new Date(2014, 9, 15), title: 'Event title here', content: this.content },
-    { caption: '01 Nov', date: new Date(2014, 11, 1), title: 'Event title here', content: this.content },
-    { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
-    { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
-    { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
-    { caption: '10 Dec', date: new Date(2016, 12, 10), title: 'Event title here', content: this.content },
-    { caption: '29 Jan', date: new Date(2017, 1, 19), title: 'Event title here', content: this.content },
-    { caption: '3 Mar', date: new Date(2018, 3, 3), title: 'Event title here', content: this.content },
+    { caption: '1 Jan', date: new Date(2018, 1, 1), selected: true, title: 'Project Kickoff', content: this.content },
+    { caption: '5 Jan', date: new Date(2018, 1, 5), title: 'Budget and Staffing Documents', content: this.content },
+    { caption: '12 Jan', date: new Date(2018, 1, 12), title: 'Planning and Scoping Memo', content: this.content },
+    { caption: '26 Jan', date: new Date(2018, 1, 26), title: 'Document Templates Created', content: this.content },
+    { caption: '5 Feb', date: new Date(2018, 2, 5), title: 'Document Request List Sent', content: this.content },
+    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content },
+    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content },
+    { caption: '23 Mar', date: new Date(2018, 3, 23), title: 'Remediation Plans Finalized', content: this.content },
+    { caption: '27 Mar', date: new Date(2018, 3, 27), title: 'Audit Report Issued', content: this.content },
   ];
 
   colors: any = {

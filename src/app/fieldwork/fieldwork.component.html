@@ -37,35 +37,47 @@
               <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="addForm(docTable)">Add Document</button>
               <br>
               <form #docTable="ngForm" >
-                  <table class="m-5" style="table-layout:fixed">
+                  <table class="m-5 table" style="width:97%">
                       <tr>
-                        <th>Ref#</th>
-                        <th>Related System</th>
-                        <th>Related Control</th>
+                        <th style="width:100px">Ref#</th>
+                        <th style="width:100px">Related System</th>
+                        <th style="width:160px">Related Control</th>
                         <th>Control Name</th>
-                        <th>Document Reuqest</th>
                         <th>Type of Evidence</th>
                         <th>Owner</th>
                         <th>Date Requested</th>
                         <th>Date Due</th>
                         <th>Status</th>
-                        <th>Comments</th>
                       </tr>
                       <tr>
                         <td><input type="text" class="form-control" name="ref" ngModel/></td>
                         <td><input type="text" class="form-control" name="relSys" ngModel /></td>
                         <td><input type="text" class="form-control" name="relCon" ngModel/></td>
                         <td><input type="text" class="form-control" name="conName" ngModel/></td>
-                        <td><input type="text" class="form-control" name="docReq" ngModel /></td>
                         <td><input type="text" class="form-control" name="toe" ngModel/></td>
                         <td><input type="text" class="form-control" name="owner" ngModel/></td>
                         <td><input type="text" class="form-control" name="dateReq" ngModel/></td>
                         <td><input type="text" class="form-control" name="dateDue" ngModel/></td>
                         <td><input type="text" class="form-control" name="status" ngModel/></td>
-                        <td><input type="text" class="form-control" name="comment" ngModel/></td>
+                        
+
                       </tr>
                       
                     </table>
+
+                    <table class="m-5 table" style="width:97%">
+                        <tr>
+                          <th>Document Reuqest</th>
+                          <th>Comments</th>
+                        </tr>
+                        <tr>
+                          <td><input type="text" class="form-control" name="docReq" ngModel /></td>
+                          <td><textarea class="form-control" rows="5" name="comment" ngModel></textarea></td>
+                          
+  
+                        </tr>
+                        
+                      </table>
 
               </form>
 

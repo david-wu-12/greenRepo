@@ -32,17 +32,15 @@ export class FieldworkComponent implements OnInit {
   quisquam, quae, temporibus dolores porro doloribus.`;
 
   timeline: TimelineElement[] = [
-    { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content },
-    { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
-    { caption: '20 Mar', date: new Date(2014, 3, 20), title: 'Event title here', content: this.content },
-    { caption: '20 May', date: new Date(2014, 5, 20), title: 'Event title here', content: this.content },
-    { caption: '09 Jul', date: new Date(2014, 7, 9), title: 'Event title here', content: this.content },
-    { caption: '30 Aug', date: new Date(2014, 8, 30), title: 'Event title here', content: this.content },
-    { caption: '15 Sep', date: new Date(2014, 9, 15), title: 'Event title here', content: this.content },
-    { caption: '01 Nov', date: new Date(2014, 11, 1), title: 'Event title here', content: this.content },
-    { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
-    { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
-    { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
+    { caption: '5 Feb', date: new Date(2018, 2, 5), selected: true, title: 'Document Request List Sent', content: this.content },
+    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content },
+    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content },
+    { caption: '5 Feb', date: new Date(2018, 5, 5),  title: 'Document Request List Sent 2', content: this.content },
+    { caption: '16 Feb', date: new Date(2018, 6, 16), title: 'Documents Requested Due 2', content: this.content },
+    { caption: '16 Mar', date: new Date(2018, 7, 16), title: 'Completed Testing Workbook 2', content: this.content },
+    { caption: '5 Feb', date: new Date(2018, 8, 5),  title: 'Document Request List Sent 2', content: this.content },
+    { caption: '16 Feb', date: new Date(2018, 9, 16), title: 'Documents Requested Due 2', content: this.content },
+    { caption: '16 Mar', date: new Date(2018, 10, 16), title: 'Completed Testing Workbook 2', content: this.content },
   ];
 
   colors: any = {
