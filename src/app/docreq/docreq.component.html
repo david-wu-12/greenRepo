@@ -1,0 +1,133 @@
+
+<div class="row mr-1 ml-1">
+  <div class="mt-2 col-sm-12" style="height:300px">   
+          <div class="mt-5 mb-5" style="width:100%; height:auto; overflow:auto">
+            <h2 style="background-color: #ADD8E6"><span class="m-3">Document Request List</span></h2>
+            <div style="width:100%; height:auto">
+                <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="addForm(docTable)">Add Document</button>
+                <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="openModal(template)">Check Document Status</button>
+                <br>
+                <form #docTable="ngForm" >
+                    <table class="m-5 table" style="width:97%">
+                        <tr>
+                          <th style="width:100px">Ref#</th>
+                          <th style="width:100px">Related System</th>
+                          <th style="width:160px">Related Control</th>
+                          <th>Control Name</th>
+                          <th>Type of Evidence</th>
+                          <th>Owner</th>
+                          <th>Date Requested</th>
+                          <th>Date Due</th>
+                          <th>Status</th>
+                        </tr>
+                        <tr>
+                          <td><input type="text" class="form-control" name="ref" ngModel/></td>
+                          <td><input type="text" class="form-control" name="relSys" ngModel /></td>
+                          <td><input type="text" class="form-control" name="relCon" ngModel/></td>
+                          <td><input type="text" class="form-control" name="conName" ngModel/></td>
+                          <td><input type="text" class="form-control" name="toe" ngModel/></td>
+                          <td><input type="text" class="form-control" name="owner" ngModel/></td>
+                          <td><input type="text" class="form-control" name="dateReq" ngModel/></td>
+                          <td><input type="text" class="form-control" name="dateDue" ngModel/></td>
+                          <td><input type="text" class="form-control" name="status" ngModel/></td>
+                        </tr>
+                        
+                      </table>
+  
+                      <table class="m-5 table" style="width:97%">
+                          <tr>
+                            <th>Document Reuqest</th>
+                            <th>Comments</th>
+                          </tr>
+                          <tr>
+                            <td><input type="text" class="form-control" name="docReq" ngModel /></td>
+                            <td><textarea class="form-control" rows="5" name="comment" ngModel></textarea></td>
+                          </tr>
+                        </table>
+  
+                </form>
+  
+            </div>
+            <table class="m-5 table" style="width:97%">
+                <tr style="height: 30px">
+                  <th>Ref#</th>
+                  <th>Related System</th>
+                  <th>Related Control</th>
+                  <th>Control Name</th>
+                  <th>Document Request</th>
+                  <th>Type of Evidence</th>
+                  <th (click)="filterOwner()">Owner</th>
+                  <th>Date Requested</th>
+                  <th>Date Due</th>
+                  <th>Status</th>
+                  <th>Comments</th>
+                  <th>Delete Document Request</th>
+                </tr>
+                <tr *ngFor="let doc of docRequestlist" class="border-bottom border-top" >
+                  <td>{{doc.Ref}}</td>
+                  <td>{{doc.RelatedSystem}}</td>
+                  <td>{{doc.RelatedControl}}</td>
+                  <td>{{doc.ControlName}}</td>
+                  <td>{{doc.DocumentReuqest}}</td>
+                  <td>{{doc.TypeofEvidence}}</td>
+                  <td>{{doc.Owner}}</td>
+                  <td>{{doc.DateRequested}}</td>
+                  <td>{{doc.DateDue}}</td>
+                  <td>{{doc.Status}}</td>
+                  <td>{{doc.Comments}}</td>
+                  <td (click)="removeDoc(doc)"><i class="fa fa-times" aria-hidden="true"></i></td>
+                </tr>
+                
+                
+              </table>
+  
+  
+          </div>
+  
+  </div>
+  
+  
+  </div>
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Document Status</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #checkTable="ngForm">
+        <div class="form-group">
+          <label for="sel1">Select an owner:</label>
+          <select class="form-control" name="ownerSel" ngModel (change)="getdocData(checkTable)">
+            <option *ngFor="let doc of uniqueOwners">{{doc.Owner}}</option>
+          </select>
+          <br>
+        </div>
+      </form> 
+      <table class="m-1 table" style="width:97%">
+        <tr style="height: 30px">
+          <th>Ref#</th>
+          <th>Document Request</th>
+          <th>Type of Evidence</th>
+          <th>Date Due</th>
+          <th>Status</th>
+          <th>Comments</th>
+        </tr>
+        <tr *ngFor="let doc of selectedOwner" class="border-bottom border-top" >
+                <td>{{doc.Ref}}</td>
+                <td>{{doc.DocumentReuqest}}</td>
+                <td>{{doc.TypeofEvidence}}</td>
+                <td>{{doc.DateDue}}</td>
+                <td>{{doc.Status}}</td>
+                <td>{{doc.Comments}}</td>
+        </tr>
+        
+        
+      </table>   
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default">Send Request Email</button>
+    </div>
+  </ng-template>

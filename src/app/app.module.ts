@@ -22,6 +22,8 @@ import { CalendarMonthModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { FieldworkComponent } from './fieldwork/fieldwork.component';
+import { DocreqComponent } from './docreq/docreq.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { FieldworkComponent } from './fieldwork/fieldwork.component';
     EntryPageComponent,
     HeaderComponent,
     HorizontalTimelineComponent,
-    FieldworkComponent
+    FieldworkComponent,
+    DocreqComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { FieldworkComponent } from './fieldwork/fieldwork.component';
     CalendarCommonModule,
     CalendarMonthModule,
     DemoUtilsModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    ModalModule.forRoot()
 
   ],
   providers: [

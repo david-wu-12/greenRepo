@@ -26,4 +26,8 @@ export class AppComponent {
   goToLaunchpad() {
     this.router.navigate(['/entrypage']);
   }
+
+  goToDocReq() {
+    this.router.navigate(['/docreq']);
+  }
 }
