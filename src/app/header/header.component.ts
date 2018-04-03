@@ -10,9 +10,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() showNav = new EventEmitter();
   routerSub: any;
   headerText: any;
+  innerWidth: any;
   constructor(private actRoute: Router) { }
 
   ngOnInit() {
+    this.innerWidth = (window.screen.width) + 'px';
+
     this.routerSub = this.actRoute.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.url;
