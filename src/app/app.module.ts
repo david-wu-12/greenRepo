@@ -24,6 +24,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { FieldworkComponent } from './fieldwork/fieldwork.component';
 import { DocreqComponent } from './docreq/docreq.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgUploaderModule } from 'ngx-uploader';
 
 
 @NgModule({
@@ -51,7 +52,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CalendarMonthModule,
     DemoUtilsModule,
     AccordionModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgUploaderModule
+
 
   ],
   providers: [

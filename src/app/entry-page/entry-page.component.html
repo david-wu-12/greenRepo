@@ -1,6 +1,3 @@
-<div class="mt-3" style="text-align:center"> 
-    <h2>Launchpad</h2>
-  </div>
   <div class="row mr-1 ml-1">
       <horizontal-timeline class="col-sm-12" [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
   </div>
@@ -32,14 +29,27 @@
             </mwl-calendar-day-view>
           </div>
           <div class="mt-5 border mb-5" style="width:100%; height:auto;">
-            <h2 class="border p-3" style="background-color: #ADD8E6"><span class="m-3">Deliverables
-               <span (click)="addDelive(newDeliverable)" style="float:right" class="mr-3 ml-3"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
-                <input #newDeliverable style="float:right" type="text" name="fname"></span></h2>
+              <div class="border p-3" style="background-color: #ADD8E6">
+                <div class="row mr-1 ml-1">
+                    <div class="mt-2 col-sm-6">   
+                          <h2 class="mr-0" style="width:max-content">Deliverables</h2>
+                    </div>
+                    <div class="mt-2 col-sm-6">   
+                        <label class="upload-button"  style="float:right">
+                          <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+                        </label>
+                  </div>
+                </div>
+              </div>
+
+
             <ul class="ml-5 pb-2">
               <li  *ngFor="let deliverable of deliverableList" style="font-size:20px" class="pt-3">{{deliverable.name}}
                 <span (click)="removeDeliv(deliverable.id)" class="ml-3"><i class="fa fa-times" aria-hidden="true"></i>
               </span></li>
             </ul>
+
+
           </div>
   
   </div>

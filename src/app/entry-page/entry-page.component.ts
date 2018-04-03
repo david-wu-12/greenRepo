@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter  } from '@angular/core';
 import { ActionService } from '../services/action.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -16,6 +16,7 @@ import {
   isSameMonth,
   addHours
 } from 'date-fns';
+import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
 
 @Component({
   selector: 'app-entry-page',
@@ -71,20 +72,7 @@ export class EntryPageComponent implements OnInit {
     },
     ,
     {
-      title: 'Editable event',
-      color: this.colors.yellow,
-      start: new Date(),
-      actions: [
-        {
-          label: '<i class="fa fa-fw fa-pencil"></i>',
-          onClick: ({ event }: { event: CalendarEvent }): void => {
-            console.log('Edit event', event);
-          }
-        }
-      ]
-    },
-    {
-      title: 'Deletable event',
+      title: 'Team Member One',
       color: this.colors.blue,
       start: new Date(),
       actions: [
@@ -98,9 +86,18 @@ export class EntryPageComponent implements OnInit {
       ]
     },
     {
-      title: 'Non editable and deletable event',
-      color: this.colors.red,
-      start: new Date()
+      title: 'Team Member Two',
+      color: this.colors.blue,
+      start: new Date(),
+      actions: [
+        {
+          label: '<i class="fa fa-fw fa-times"></i>',
+          onClick: ({ event }: { event: CalendarEvent }): void => {
+            this.events = this.events.filter(iEvent => iEvent !== event);
+            console.log('Event deleted', event);
+          }
+        }
+      ]
     }
   ];
 
@@ -108,8 +105,19 @@ export class EntryPageComponent implements OnInit {
 
   deliverableList: any;
 
+  options: UploaderOptions;
+  formData: FormData;
+  files: UploadFile[];
+  uploadInput: EventEmitter<UploadInput>;
+  humanizeBytes: Function;
+  dragOver: boolean;
 
-  constructor(private actionService: ActionService, private db: AngularFireDatabase) { }
+  constructor(private actionService: ActionService, private db: AngularFireDatabase) {
+    this.files = []; // local uploading files array
+    this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
+    this.humanizeBytes = humanizeBytes;
+
+   }
 
   ngOnInit() {
     // this.actionService.getComments('https://jsonplaceholder.typicode.com/posts')
@@ -183,6 +191,62 @@ export class EntryPageComponent implements OnInit {
     const indexTodelete = this.deliverableList.findIndex( d => d.id === delD );
     console.log(indexTodelete);
     this.deliverableList.splice(indexTodelete, 1);
+  }
+
+  onUploadOutput(output: UploadOutput): void {
+    const newDel = {
+      name: output.file.name,
+      id: output.file.id
+    };
+    this.deliverableList.push(newDel);
+    if (output.type === 'allAddedToQueue') { // when all files added in queue
+      // uncomment this if you want to auto upload files when added
+      // const event: UploadInput = {
+      //   type: 'uploadAll',
+      //   url: '/upload',
+      //   method: 'POST',
+      //   data: { foo: 'bar' }
+      // };
+      // this.uploadInput.emit(event);
+    } else if (output.type === 'addedToQueue'  && typeof output.file !== 'undefined') { // add file to array when added
+      this.files.push(output.file);
+    } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
+      // update current data in files array for uploading file
+      const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
+      this.files[index] = output.file;
+    } else if (output.type === 'removed') {
+      // remove file from array when removed
+      this.files = this.files.filter((file: UploadFile) => file !== output.file);
+    } else if (output.type === 'dragOver') {
+      this.dragOver = true;
+    } else if (output.type === 'dragOut') {
+      this.dragOver = false;
+    } else if (output.type === 'drop') {
+      this.dragOver = false;
+    }
+  }
+
+  startUpload(): void {
+    const event: UploadInput = {
+      type: 'uploadAll',
+      url: '',
+      method: 'POST',
+      data: { foo: 'bar' }
+    };
+
+    this.uploadInput.emit(event);
+  }
+
+  cancelUpload(id: string): void {
+    this.uploadInput.emit({ type: 'cancel', id: id });
+  }
+
+  removeFile(id: string): void {
+    this.uploadInput.emit({ type: 'remove', id: id });
+  }
+
+  removeAllFiles(): void {
+    this.uploadInput.emit({ type: 'removeAll' });
   }
 
 }
