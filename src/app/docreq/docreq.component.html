@@ -3,8 +3,21 @@
   <div class="mt-2 col-sm-12" style="height:300px">   
           <div class="mt-5 mb-5" style="width:100%; height:auto; overflow:auto">
             <div style="width:100%; height:auto">
-                <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="addForm(docTable)">Add Document</button>
-                <button type="button" class="btn btn-primary mr-3" style="float:right; display:block" (click)="openModal(template)">Check Document Status</button>
+                <div class="btn-group" dropdown>
+                    <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                      Select REQUEST Template <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li class="divider dropdown-divider"></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                      </li>
+                    </ul>
+                  </div>
+                <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="addForm(docTable)">Add Document</button>
+                <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="openModal(template)">Check Document Status</button>
                 <br>
                 <form #docTable="ngForm" >
                     <table class="m-5 table" style="width:97%">

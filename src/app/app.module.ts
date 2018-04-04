@@ -25,6 +25,7 @@ import { FieldworkComponent } from './fieldwork/fieldwork.component';
 import { DocreqComponent } from './docreq/docreq.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgUploaderModule } from 'ngx-uploader';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { NgUploaderModule } from 'ngx-uploader';
     DemoUtilsModule,
     AccordionModule.forRoot(),
     ModalModule.forRoot(),
-    NgUploaderModule
+    NgUploaderModule,
+    BsDropdownModule.forRoot()
 
 
   ],

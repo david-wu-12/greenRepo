@@ -34,8 +34,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
              break;
           }
           default: {
-             console.log('Invalid choice');
-             break;
+            this.headerText = 'IT Audit Launchpad';
+            break;
           }
        }
       }

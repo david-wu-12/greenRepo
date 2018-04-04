@@ -132,6 +132,7 @@ export class DocreqComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.uniqueOwners = [];
+    this.selectedOwner = [];
     this.getUniqueOwners();
     this.modalRef = this.modalService.show(template,
       Object.assign({}, { class: 'gray modal-lg' }));
