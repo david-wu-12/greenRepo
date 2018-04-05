@@ -14,8 +14,7 @@
                       </li>
                     </ul>
                   </div>
-                <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="addForm(docTable)">Add a Document Request</button>
-                <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="openModal(template)">Check Document Status</button>
+
                 <br>
                 <form #docTable="ngForm" >
                     <table class="m-5 table" style="width:97%">
@@ -44,7 +43,7 @@
                         
                       </table>
   
-                      <table class="m-5 table" style="width:97%">
+                      <table class="table mt-5 mr-5 ml-5 mb-0" style="width:97%">
                           <tr>
                             <th>Document Reuqest</th>
                             <th>Comments</th>
@@ -54,7 +53,7 @@
                             <td><textarea class="form-control" rows="5" name="comment" ngModel></textarea></td>
                           </tr>
                         </table>
-  
+                        <button type="button" class="btn btn-primary mr-3 mb-4" style="float:right;" (click)="addForm(docTable)">Add a Document Request</button>
                 </form>
   
             </div>
@@ -95,7 +94,8 @@
                 
               </table>
   
-  
+              <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="openModal(template)">Check Document Status</button>
+
           </div>
   
   </div>
