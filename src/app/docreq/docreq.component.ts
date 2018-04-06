@@ -60,7 +60,7 @@ export class DocreqComponent implements OnInit {
     foundval.RelatedSystem =  formToEdit.value.rs ;
     foundval.RelatedControl =   formToEdit.value.rc ;
     foundval.ControlName =   formToEdit.value.cn ;
-    foundval.DocumentReuqest =  formToEdit.value.docR ;
+    foundval.DocumentRequest =  formToEdit.value.docR ;
     foundval.TypeofEvidence =   formToEdit.value.toe;
     foundval.Owner =   formToEdit.value.owned ;
     foundval.DateRequested =  formToEdit.value.dr;
@@ -78,7 +78,7 @@ export class DocreqComponent implements OnInit {
       RelatedSystem: 'N/A',
       RelatedControl: 'N/A',
       ControlName: 'N/A',
-      DocumentReuqest: 'N/A',
+      DocumentRequest: 'N/A',
       TypeofEvidence: 'N/A',
       Owner: 'N/A',
       DateRequested: 'N/A',
@@ -104,7 +104,7 @@ export class DocreqComponent implements OnInit {
 
     }
     if ( !(formToAdd.value.docReq.trim() === '') ) {
-      newDoc.DocumentReuqest = formToAdd.value.docReq.trim();
+      newDoc.DocumentRequest = formToAdd.value.docReq.trim();
       formToAdd.controls.docReq.setValue('');
 
     }
@@ -220,7 +220,7 @@ export class DocreqComponent implements OnInit {
           RelatedSystem: 'AD',
           RelatedControl: 'IT ELC-01',
           ControlName: 'IT POLICIES',
-          DocumentReuqest: 'System generated list of all users with access to AD,' +
+          DocumentRequest: 'System generated list of all users with access to AD,' +
            ' including all attributes listed in the embedded comments of this cell.' +
           'Please include the query or screenshot used to generate the list',
           TypeofEvidence: 'System-generated',
@@ -235,7 +235,7 @@ export class DocreqComponent implements OnInit {
         RelatedSystem: 'Application A',
         RelatedControl: 'IT ELC-02',
         ControlName: 'User Access Review',
-        DocumentReuqest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
+        DocumentRequest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
         TypeofEvidence: 'System-generated',
         Owner: 'Mark Zuck',
         DateRequested: '12/12/2013',
@@ -248,7 +248,7 @@ export class DocreqComponent implements OnInit {
           RelatedSystem: 'Application B',
           RelatedControl: 'MS-01',
           ControlName: 'Admin Access Review',
-          DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
+          DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
           + 'communicated to employees and/or accessible via a central repository',
           TypeofEvidence: 'Manual',
           Owner: 'Tom Brady',
@@ -261,8 +261,8 @@ export class DocreqComponent implements OnInit {
           Ref: '13',
           RelatedSystem: 'Application C',
           RelatedControl: 'IT ELC-05',
-          ControlName: 'Change Testing, Change Reuqest Aapproval, Change Migration Approval ',
-          DocumentReuqest: 'System generated listing of users with access to modify the frequency of Application A batch jobs.',
+          ControlName: 'Change Testing, Change Request Aapproval, Change Migration Approval ',
+          DocumentRequest: 'System generated listing of users with access to modify the frequency of Application A batch jobs.',
           TypeofEvidence: 'System-generated',
           Owner: 'Peyton Manning',
           DateRequested: '12/12/2016',
@@ -275,7 +275,7 @@ export class DocreqComponent implements OnInit {
           RelatedSystem: 'Application A, Application B, Application C',
           RelatedControl: 'MC-05',
           ControlName: 'Emergency Changes',
-          DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
+          DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
           + 'communicated to employees and/or accessible via a central repository',
           TypeofEvidence: 'System-generated',
           Owner: 'Eli Manning',
@@ -292,8 +292,8 @@ export class DocreqComponent implements OnInit {
           Ref: '10',
           RelatedSystem: 'AD',
           RelatedControl: 'IT ELC-01',
-          ControlName: 'IT POLICIES',
-          DocumentReuqest: 'System generated list of all users with access to AD,' +
+          ControlName: 'IT Policies',
+          DocumentRequest: 'System generated list of all users with access to AD,' +
            ' including all attributes listed in the embedded comments of this cell.' +
           'Please include the query or screenshot used to generate the list',
           TypeofEvidence: 'System-generated',
@@ -308,7 +308,7 @@ export class DocreqComponent implements OnInit {
         RelatedSystem: 'Application A',
         RelatedControl: 'IT ELC-02',
         ControlName: 'User Access Review',
-        DocumentReuqest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
+        DocumentRequest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
         TypeofEvidence: 'System-generated',
         Owner: 'Mark Zuck',
         DateRequested: '12/12/2013',
