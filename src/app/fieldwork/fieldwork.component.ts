@@ -25,16 +25,16 @@ import {
 })
 export class FieldworkComponent implements OnInit {
   coursesObservable: Observable<any[]>;
-  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
-  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
-  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
-  quisquam, quae, temporibus dolores porro doloribus.`;
+  content = `January 1st marks the kickoff of this IT Audit and the ensuing phases of the project, beginning with planning, followed by fieldwork and reporting with an estimated date of completion of March 30th.`;
+  content2 = 'Protiviti and client team has agreed to a set budget for the project and the Protiviti team staffing has been established. Documents have been uploaded to the ProjectView portal.';
+  content3 = 'Protiviti and client team have established a set project plan for the duration of the project, including schedule of phases and deliverables. Memo has been uploaded to the ProjectView portal.';
+  content4 = 'Protiviti team has finalized the testing worksheets, testing status spreadsheet, status meeting template, and audit report template and uploaded them to the ProjectView portal.';
 
   timeline: TimelineElement[] = [
     { caption: '5 Feb', date: new Date(2018, 2, 5), selected: true, title: 'Document Request List Sent', content: this.content },
-    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content },
-    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content },
-    { caption: '5 Feb', date: new Date(2018, 5, 5),  title: 'Document Request List Sent 2', content: this.content },
+    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content2 },
+    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content3 },
+    { caption: '5 Feb', date: new Date(2018, 5, 5),  title: 'Document Request List Sent 2', content: this.content4 },
     { caption: '16 Feb', date: new Date(2018, 6, 16), title: 'Documents Requested Due 2', content: this.content },
     { caption: '16 Mar', date: new Date(2018, 7, 16), title: 'Completed Testing Workbook 2', content: this.content },
     { caption: '5 Feb', date: new Date(2018, 8, 5),  title: 'Document Request List Sent 2', content: this.content },

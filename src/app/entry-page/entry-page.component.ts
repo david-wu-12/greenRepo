@@ -27,21 +27,26 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions }
 })
 export class EntryPageComponent implements OnInit {
   coursesObservable: Observable<any[]>;
-  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
-  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
-  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
-  quisquam, quae, temporibus dolores porro doloribus.`;
+  content = `January 1st marks the kickoff of this IT Audit and the ensuing phases of the project, beginning with planning, followed by fieldwork and reporting with an estimated date of completion of March 30th.`;
+  content2 = 'Protiviti and client team has agreed to a set budget for the project and the Protiviti team staffing has been established. Documents have been uploaded to the ProjectView portal.';
+  content3 = 'Protiviti and client team have established a set project plan for the duration of the project, including schedule of phases and deliverables. Memo has been uploaded to the ProjectView portal.';
+  content4 = 'Protiviti team has finalized the testing worksheets, testing status spreadsheet, status meeting template, and audit report template and uploaded them to the ProjectView portal.';
+  content5 = 'Protiviti team has shared a complete Document Request List with the client which can be accessed in the ProjectView portal. This DRL outlines the evidence that the Protiviti team needs to obtain from the client in order to complete testing. Each item that Protiviti has requested is a separate line item with an owner and deadline, and the list can be filtered by owner to see all document requests assigned to any individual. The DRL is live and updates as documents are received';
+  content6 = 'The documents that Protiviti has requested as evidence for testing are due by this date. In order to continue with the set project schedule, Protiviti requires all evidence to be uploaded by this date in order to avoid delays in testing.';
+  content7 = 'Protiviti team has completed testing all controls and the Testing Workbook has been completely filled out with all information applicable. The Testing Workbook has been uploaded to the ProjectView portal and is accessible by individuals from the client to view the conclusions and related evidence as needed.';
+  content8 = 'All testing results and exceptions have been shared with the client. Remediation plans have been decided upon between the Protiviti team and the client team, including owners, priority, and remediation date. Relevant documents have been uploaded to the ProjectView portal.';
+  content9 = 'A close meeting has been held, and the final Audit Report has been issued. The document is accessible in the ProjectView portal, along with all previous documentation throughout the life of the project.';
 
   timeline: TimelineElement[] = [
     { caption: '1 Jan', date: new Date(2018, 1, 1), selected: true, title: 'Project Kickoff', content: this.content },
-    { caption: '5 Jan', date: new Date(2018, 1, 5), title: 'Budget and Staffing Documents', content: this.content },
-    { caption: '12 Jan', date: new Date(2018, 1, 12), title: 'Planning and Scoping Memo', content: this.content },
-    { caption: '26 Jan', date: new Date(2018, 1, 26), title: 'Document Templates Created', content: this.content },
-    { caption: '5 Feb', date: new Date(2018, 2, 5), title: 'Document Request List Sent', content: this.content },
-    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content },
-    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content },
-    { caption: '23 Mar', date: new Date(2018, 3, 23), title: 'Remediation Plans Finalized', content: this.content },
-    { caption: '27 Mar', date: new Date(2018, 3, 27), title: 'Audit Report Issued', content: this.content },
+    { caption: '5 Jan', date: new Date(2018, 1, 5), title: 'Budget and Staffing Documents', content: this.content2 },
+    { caption: '12 Jan', date: new Date(2018, 1, 12), title: 'Planning and Scoping Memo', content: this.content3 },
+    { caption: '26 Jan', date: new Date(2018, 1, 26), title: 'Document Templates Created', content: this.content4 },
+    { caption: '5 Feb', date: new Date(2018, 2, 5), title: 'Document Request List Sent', content: this.content5 },
+    { caption: '16 Feb', date: new Date(2018, 2, 16), title: 'Documents Requested Due', content: this.content6 },
+    { caption: '16 Mar', date: new Date(2018, 3, 16), title: 'Completed Testing Workbook', content: this.content7 },
+    { caption: '23 Mar', date: new Date(2018, 3, 23), title: 'Remediation Plans Finalized', content: this.content8 },
+    { caption: '27 Mar', date: new Date(2018, 3, 27), title: 'Audit Report Issued', content: this.content9 },
   ];
 
   colors: any = {
@@ -128,31 +133,15 @@ export class EntryPageComponent implements OnInit {
     this.deliverableList = [
       {
         id: 1,
-        name: 'Document A',
+        name: 'Very Important Document',
       },
       {
         id: 2,
-        name: 'Document B',
+        name: 'Deliverable For Zero Carbon Folks',
       },
       {
         id: 3,
-        name: 'Document D',
-      },
-      {
-        id: 4,
-        name: 'Document B',
-      },
-      {
-        id: 5,
-        name: 'Document D',
-      },
-      {
-        id: 6,
-        name: 'Document B',
-      },
-      {
-        id: 7,
-        name: 'Document C',
+        name: 'Zero Carbon Assement and Bill',
       }
     ];
 
