@@ -1,0 +1,17 @@
+.plogin
+{
+    background-image: url("/assets/stars.jpeg");
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+.clogin {
+    background-image: url("/assets/starbottle.jpg");
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+.textCen {
+    position: relative;
+    top: 50%;
+}

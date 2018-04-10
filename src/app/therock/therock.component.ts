@@ -1,19 +1,16 @@
-import { Component, OnInit, TemplateRef, OnDestroy  } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import * as _ from 'lodash';
-import { Router, NavigationEnd  } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import { DocStore } from '../stores/doc.store';
 
-
 @Component({
-  selector: 'app-docreq',
-  templateUrl: './docreq.component.html',
-  styleUrls: ['./docreq.component.css'],
+  selector: 'app-therock',
+  templateUrl: './therock.component.html',
+  styleUrls: ['./therock.component.css']
 })
-export class DocreqComponent implements OnInit, OnDestroy {
+export class TherockComponent implements OnInit {
   modalRef: BsModalRef;
   filterToggle: any = false;
   dropdownText: any = 'Select REQUEST Template';
@@ -24,26 +21,20 @@ export class DocreqComponent implements OnInit, OnDestroy {
   storedDocListTemp = [];
   selectedDoc: any;
   selectedDocTemp: any;
-  actSub: any;
-  showUpDoc: any = false;
   docSub: any;
-
-  constructor(private modalService: BsModalService,
-          private actRoute: ActivatedRoute, private docStore: DocStore ) { }
+  constructor(private modalService: BsModalService, private docStore: DocStore) { }
 
   ngOnInit() {
-    this.actSub = this.actRoute.params.subscribe(params => {
-      console.log(params);
-        this.showUpDoc = false;
-        this.docRequestlist = [];
-   });
-    }
+    this.docSub = this.docStore.docList.subscribe( d => this.docRequestlist = d);
+  }
 
   getUniqueOwners() {
     this.docRequestlist.forEach(e => {
       if ( this.uniqueOwners.findIndex( u => u.Owner === e.Owner) > -1) {
       } else {
-        this.uniqueOwners.push(e);
+        if ( !(e.Owner === '')) {
+          this.uniqueOwners.push(e);
+        }
       }
     });
   }
@@ -96,9 +87,7 @@ export class DocreqComponent implements OnInit, OnDestroy {
       DateRequested: 'N/A',
       DateDue: 'N/A',
       Status: 'N/A',
-      DateUp: 'N/A',
       Comments: 'N/A',
-      ShowDocc: false
     };
     if ( !(formToAdd.value.comment.trim() === '') ) {
       newDoc.Comments = formToAdd.value.comment.trim();
@@ -142,13 +131,16 @@ export class DocreqComponent implements OnInit, OnDestroy {
       formToAdd.controls.relSys.setValue('');
 
     }
+    if ( !(formToAdd.value.status.trim() === '') ) {
+      newDoc.Status = formToAdd.value.status.trim();
+      formToAdd.controls.status.setValue('');
+
+    }
     if ( !(formToAdd.value.toe.trim() === '') ) {
       newDoc.TypeofEvidence = formToAdd.value.toe.trim();
       formToAdd.controls.toe.setValue('');
 
     }
-    newDoc.Status = 'Pending';
-    newDoc.DateUp = 'N/A';
     this.docRequestlist.push(newDoc);
   }
 
@@ -239,9 +231,7 @@ export class DocreqComponent implements OnInit, OnDestroy {
           DateRequested: '12/12/2012',
           DateDue: '1/12/2020',
           Status: 'Pending',
-          DateUp: 'N/A',
           Comments: 'there are no comments',
-          ShowDocc: false
        },
        {
         Ref: '100',
@@ -250,14 +240,11 @@ export class DocreqComponent implements OnInit, OnDestroy {
         ControlName: 'User Access Review',
         DocumentReuqest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
         TypeofEvidence: 'System-generated',
-        Owner: '',
-        DateRequested: '',
-        DateDue: '',
+        Owner: 'Mark Zuck',
+        DateRequested: '12/12/2013',
+        DateDue: '12/12/2020',
         Status: 'Pending',
-        DateUp: 'N/A',
-        Comments: '',
-        ShowDocc: false
-
+        Comments: 'there are no comments',
         },
         {
           Ref: '11',
@@ -271,10 +258,7 @@ export class DocreqComponent implements OnInit, OnDestroy {
           DateRequested: '12/12/2014',
           DateDue: '1/13/2020',
           Status: 'Pending',
-          DateUp: 'N/A',
           Comments: 'there are no comments',
-          ShowDocc: false
-
         },
        {
           Ref: '13',
@@ -287,10 +271,7 @@ export class DocreqComponent implements OnInit, OnDestroy {
           DateRequested: '12/12/2016',
           DateDue: '2/12/2020',
           Status: 'Pending',
-          DateUp: 'N/A',
           Comments: 'there are no comments',
-          ShowDocc: false
-
        },
         {
           Ref: '14',
@@ -300,27 +281,20 @@ export class DocreqComponent implements OnInit, OnDestroy {
           DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
           + 'communicated to employees and/or accessible via a central repository',
           TypeofEvidence: 'System-generated',
-          Owner: '',
-          DateRequested: '',
-          DateDue: '',
+          Owner: 'Eli Manning',
+          DateRequested: '12/12/2017',
+          DateDue: '12/2/2020',
           Status: 'Pending',
-          DateUp: 'N/A',
-          Comments: '',
-          ShowDocc: false
-
+          Comments: 'there are no comments',
         },
       ];
-      if (this.showUpDoc) {
-        this.docRequestlist[0].DateUp = '4/6/2018';
-        this.docRequestlist[0].ShowDocc = true;
-      }
     } else {
       this.dropdownText = 'FinTech';
       this.docRequestlist = [
         {
-          Ref: '11010',
+          Ref: '10',
           RelatedSystem: 'AD',
-          RelatedControl: 'IT ELC-0123211',
+          RelatedControl: 'IT ELC-01',
           ControlName: 'IT POLICIES',
           DocumentReuqest: 'System generated list of all users with access to AD,' +
            ' including all attributes listed in the embedded comments of this cell.' +
@@ -330,10 +304,7 @@ export class DocreqComponent implements OnInit, OnDestroy {
           DateRequested: '12/12/2012',
           DateDue: '1/12/2020',
           Status: 'Pending',
-          DateUp: 'N/A',
           Comments: 'there are no comments',
-          ShowDocc: false
-
        },
        {
         Ref: '100',
@@ -345,26 +316,11 @@ export class DocreqComponent implements OnInit, OnDestroy {
         Owner: 'Mark Zuck',
         DateRequested: '12/12/2013',
         DateDue: '12/12/2020',
-        Status: 'Verification In Progress',
-        DateUp: '4/20/2018',
+        Status: 'Verification In Process',
         Comments: 'there are no comments',
-        ShowDocc: false
-
         }
       ];
-      if (this.showUpDoc) {
-        this.docRequestlist[0].DateUp = '4/6/2018';
-        this.docRequestlist[0].ShowDocc = true;
-      }
     }
-  }
-
-  storeDocument() {
-    this.docStore.updateData(this.docRequestlist);
-  }
-
-  ngOnDestroy() {
-
   }
 
 }

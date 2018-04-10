@@ -26,6 +26,10 @@ import { DocreqComponent } from './docreq/docreq.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgUploaderModule } from 'ngx-uploader';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TherockComponent } from './therock/therock.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { DocStore } from './stores/doc.store';
+import { ClientViewComponent } from './client-view/client-view.component';
 
 
 @NgModule({
@@ -35,7 +39,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     HeaderComponent,
     HorizontalTimelineComponent,
     FieldworkComponent,
-    DocreqComponent
+    DocreqComponent,
+    TherockComponent,
+    LoginpageComponent,
+    ClientViewComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +69,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   providers: [
     DataService,
     ActionService,
-    HttpClientModule
+    HttpClientModule,
+    DocStore
   ],
   bootstrap: [AppComponent]
 })

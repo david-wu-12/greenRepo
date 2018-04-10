@@ -10,6 +10,9 @@ export class AppComponent {
   title = 'app';
   mode_var = 'slide';
   private _opened: any = false;
+  loggingIn: any = true;
+  dontShow: any = true;
+  loggedInAs: any;
 
   private _toggleSidebar() {
     this._opened = !this._opened;
@@ -29,5 +32,23 @@ export class AppComponent {
 
   goToDocReq() {
     this.router.navigate(['/docreq']);
+  }
+
+  goToDocViewReq() {
+    this.router.navigate(['/viewdocreq']);
+  }
+
+  navLoggedIn(value) {
+    console.log(value);
+    if (value === 'P') {
+      this.loggingIn = false;
+      this.loggedInAs = 'Admin';
+      this.router.navigate(['/entrypage']);
+    } else {
+      this.loggedInAs = 'Dwayne Johnson';
+      this.loggingIn = false;
+      this.dontShow = false;
+      this.router.navigate(['/cliView']);
+    }
   }
 }

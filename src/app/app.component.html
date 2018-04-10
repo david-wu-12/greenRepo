@@ -1,20 +1,27 @@
-<ng-sidebar-container style="height: 100vh;">
+<ng-sidebar-container *ngIf="!loggingIn" style="height: 100vh;">
         <!-- A sidebar -->
         <ng-sidebar [(opened)]="_opened" [mode]="mode_var" [closeOnClickOutside]="true">
                 <div class="demo-sidebar border ml-3" aria-hidden="false" aria-label="My sidebar" style="width:350px; height:100%">
                         <p (click)="goToLaunchpad()">Launchpad</p>
                         <p>Planning</p>
+                        <p *ngIf="dontShow" (click)="goToDocReq()">Generate Document Request List</p>
                         <p (click)="goToFieldwork()">Fieldwork</p>
                         <p>Reporting</p>
-                        <p (click)="goToDocReq()">Document Request List</p>
+                        <hr>
+                        <p (click)="goToDocViewReq()">View Document Request</p>
+
 
                 </div>        
                 </ng-sidebar>
   
         <!-- Page content -->
         <div ng-sidebar-content>
-          <app-header (showNav)="_toggleSidebar()"></app-header>
+          <app-header [loggedinUser]="loggedInAs" (showNav)="_toggleSidebar()"></app-header>
           <router-outlet></router-outlet>
         </div>
   
-</ng-sidebar-container>
+</ng-sidebar-container> 
+
+<app-loginpage *ngIf="loggingIn" (showPage)="navLoggedIn($event)">
+
+</app-loginpage>

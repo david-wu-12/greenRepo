@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input  } from '@angular/core';
 import { Router, NavigationEnd  } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router, NavigationEnd  } from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() showNav = new EventEmitter();
+  @Input() loggedinUser: any;
   routerSub: any;
   headerText: any;
   innerWidth: any;
@@ -15,7 +16,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.innerWidth = (window.screen.width) + 'px';
-
     this.routerSub = this.actRoute.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.url;

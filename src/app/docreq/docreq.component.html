@@ -2,7 +2,7 @@
 <div class="row mr-1 ml-1">
   <div class="mt-2 col-sm-12" style="height:300px">   
           <div class="mt-5 mb-5" style="width:100%; height:auto; overflow:auto">
-            <div style="width:100%; height:auto">
+            <div *ngIf="!showUpDoc"  style="width:100%; height:auto">
                 <div class="btn-group" dropdown>
                     <button dropdownToggle type="button" style="min-width:300px" class="btn btn-primary dropdown-toggle">
                       {{dropdownText}} <span class="caret"></span>
@@ -27,7 +27,6 @@
                           <th>Owner</th>
                           <th>Date Requested</th>
                           <th>Date Due</th>
-                          <th>Status</th>
                         </tr>
                         <tr>
                           <td><input type="text" class="form-control" name="ref" ngModel/></td>
@@ -38,7 +37,6 @@
                           <td><input type="text" class="form-control" name="owner" ngModel/></td>
                           <td><input type="text" class="form-control" name="dateReq" ngModel/></td>
                           <td><input type="text" class="form-control" name="dateDue" ngModel/></td>
-                          <td><input type="text" class="form-control" name="status" ngModel/></td>
                         </tr>
                         
                       </table>
@@ -69,10 +67,11 @@
                   <th (click)="filterDR()">Date Requested</th>
                   <th (click)="filterDD()">Date Due</th>
                   <th (click)="filterStatus()">Status</th>
+                  <th>Date Uploaded</th>
                   <th>Comments</th>
                   <th>Edit Document Request</th>
                   <th>Delete Document Request</th>
-
+                  <!-- <th>Attached Document</th> -->
                 </tr>
                 <tr *ngFor="let doc of docRequestlist" class="border-bottom border-top" >
                   <td>{{doc.Ref}}</td>
@@ -85,16 +84,17 @@
                   <td>{{doc.DateRequested}}</td>
                   <td>{{doc.DateDue}}</td>
                   <td>{{doc.Status}}</td>
+                  <td>{{doc.DateUp}}</td>
                   <td>{{doc.Comments}}</td>
                   <td (click)="editDoc(editTemp, doc)"><i class="fa fa-pencil" aria-hidden="true"></i></td>
                   <td (click)="removeDoc(doc)"><i class="fa fa-times" aria-hidden="true"></i></td>
-
+                  <!-- <td *ngIf='doc.ShowDocc'><i class="fa fa-file" aria-hidden="true"></i></td> -->
                 </tr>
                 
                 
               </table>
-  
-              <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="openModal(template)">Check Document Status</button>
+              <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="storeDocument()">Save Document Request</button>
+              <!-- <button type="button" class="btn btn-primary mr-3" style="float:right;" (click)="openModal(template)">Check Document Status</button> -->
 
           </div>
   

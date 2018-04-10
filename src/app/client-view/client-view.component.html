@@ -1,0 +1,149 @@
+
+<div class="row mr-1 ml-1">
+    <div class="mt-2 col-sm-12" style="height:300px">   
+            <div class="mt-5 mb-5" style="width:100%; height:auto; overflow:auto">
+              <table class="m-5 table" style="width:97%">
+                  <tr style="height: 30px">
+                    <th>Ref#</th>
+                    <th>Related System</th>
+                    <th>Related Control</th>
+                    <th>Control Name</th>
+                    <th>Document Request</th>
+                    <th>Type of Evidence</th>
+                    <th (click)="filterOwner()">Owner</th>
+                    <th (click)="filterDR()">Date Requested</th>
+                    <th (click)="filterDD()">Date Due</th>
+                    <th (click)="filterStatus()">Status</th>
+                    <th>Comments</th>
+                    <th>Attached Document Request</th>
+  
+                  </tr>
+                  <tr *ngFor="let doc of docRequestlist" class="border-bottom border-top" >
+                    <td>{{doc.Ref}}</td>
+                    <td>{{doc.RelatedSystem}}</td>
+                    <td>{{doc.RelatedControl}}</td>
+                    <td>{{doc.ControlName}}</td>
+                    <td>{{doc.DocumentReuqest}}</td>
+                    <td>{{doc.TypeofEvidence}}</td>
+                    <td>{{doc.Owner}}</td>
+                    <td>{{doc.DateRequested}}</td>
+                    <td>{{doc.DateDue}}</td>
+                    <td>{{doc.Status}}</td>
+                    <td>{{doc.Comments}}</td>
+                    <label class="upload-button"  style="float:right">
+                        <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+                      </label>
+                  </tr>
+                  
+                  
+                </table>  
+            </div>
+    
+    </div>
+    
+    
+    </div>
+    
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Document Status</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #checkTable="ngForm">
+          <div class="form-group">
+            <label for="sel1">Select an owner:</label>
+            <select class="form-control" name="ownerSel" ngModel (change)="getdocData(checkTable)">
+              <option *ngFor="let doc of uniqueOwners">{{doc.Owner}}</option>
+            </select>
+            <br>
+          </div>
+        </form> 
+        <table class="m-1 table" style="width:97%">
+          <tr style="height: 30px">
+            <th>Ref#</th>
+            <th>Document Request</th>
+            <th>Type of Evidence</th>
+            <th>Date Due</th>
+            <th>Status</th>
+            <th>Comments</th>
+          </tr>
+          <tr *ngFor="let doc of selectedOwner" class="border-bottom border-top" >
+                  <td>{{doc.Ref}}</td>
+                  <td>{{doc.DocumentReuqest}}</td>
+                  <td>{{doc.TypeofEvidence}}</td>
+                  <td>{{doc.DateDue}}</td>
+                  <td>{{doc.Status}}</td>
+                  <td>{{doc.Comments}}</td>
+          </tr>
+          
+          
+        </table>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default">Send Request Email</button>
+      </div>
+    </ng-template>
+  
+    <ng-template #editTemp>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Document Request List</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editdocTable="ngForm" >
+          <div class="form-group">
+            <label>Ref#</label>
+            <input type="text" class="form-control" name="ref" [(ngModel)]="selectedDoc.Ref">
+          </div>
+          <div class="form-group">
+            <label>Related Systems</label>
+            <input type="text" class="form-control" name="rs" [(ngModel)]="selectedDoc.RelatedSystem">
+          </div>
+          <div class="form-group">
+            <label>Related Control</label>
+            <input type="text" class="form-control" name="rc" [(ngModel)]="selectedDoc.RelatedControl">
+          </div>
+          <div class="form-group">
+            <label>Control Name</label>
+            <input type="text" class="form-control" name="cn" [(ngModel)]="selectedDoc.ControlName">
+          </div>
+          <div class="form-group">
+            <label>Type Of Evidence</label>
+            <input type="text" class="form-control" name="toe" [(ngModel)]="selectedDoc.TypeofEvidence">
+          </div>
+          <div class="form-group">
+            <label>Owner</label>
+            <input type="text" class="form-control" name="owned" [(ngModel)]="selectedDoc.Owner">
+          </div>
+          <div class="form-group">
+            <label>Date Requested</label>
+            <input type="text" class="form-control" name="dr" [(ngModel)]="selectedDoc.DateRequested">
+          </div>
+          <div class="form-group">
+            <label>Date Due</label>
+            <input type="text" class="form-control" name="dd" [(ngModel)]="selectedDoc.DateDue">
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <input type="text" class="form-control" name="status" [(ngModel)]="selectedDoc.Status">
+          </div>
+          <div class="form-group">
+            <label>Document Request</label>
+            <textarea class="form-control" rows="5" id="comment" name="docR" [(ngModel)]="selectedDoc.DocumentReuqest"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment" name="coms" [(ngModel)]="selectedDoc.Comments"></textarea>
+          </div>
+      </form>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="saveDoc(editdocTable)" class="btn btn-default">Save</button>
+      </div>
+    </ng-template>
