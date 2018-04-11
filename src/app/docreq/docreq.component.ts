@@ -212,81 +212,90 @@ export class DocreqComponent implements OnInit {
   }
 
   checkRequest (requestType) {
-    if (requestType === 'IT') {
-      this.dropdownText = 'IT';
-      this.docRequestlist = [
-        {
-          Ref: '10',
-          RelatedSystem: 'AD',
-          RelatedControl: 'IT ELC-01',
-          ControlName: 'IT POLICIES',
-          DocumentRequest: 'System generated list of all users with access to AD,' +
-           ' including all attributes listed in the embedded comments of this cell.' +
-          'Please include the query or screenshot used to generate the list',
+       
+      if (requestType === 'IT SOX Audit') {
+        this.dropdownText = 'IT SOX Audit';
+        this.docRequestlist = [
+          {
+            Ref: '10',
+            RelatedSystem: 'AD',
+            RelatedControl: 'IT ELC-01',
+            ControlName: 'IT POLICIES',
+            DocumentRequest: 'System generated list of all users with access to AD,' +
+             ' including all attributes listed in the embedded comments of this cell.' +
+            'Please include the query or screenshot used to generate the list',
+            TypeofEvidence: 'System-generated',
+            Owner: 'Dwayne Johnson',
+            DateRequested: '12/12/2012',
+            DateDue: '1/12/2020',
+            Status: 'Pending',
+            Comments: 'there are no comments',
+         },
+         {
+          Ref: '100',
+          RelatedSystem: 'Application A',
+          RelatedControl: 'IT ELC-02',
+          ControlName: 'User Access Review',
+          DocumentRequest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
           TypeofEvidence: 'System-generated',
-          Owner: 'Dwayne Johnson',
-          DateRequested: '12/12/2012',
-          DateDue: '1/12/2020',
+          Owner: 'Mark Zuck',
+          DateRequested: '12/12/2013',
+          DateDue: '12/12/2020',
           Status: 'Pending',
           Comments: 'there are no comments',
-       },
-       {
-        Ref: '100',
-        RelatedSystem: 'Application A',
-        RelatedControl: 'IT ELC-02',
-        ControlName: 'User Access Review',
-        DocumentRequest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
-        TypeofEvidence: 'System-generated',
-        Owner: 'Mark Zuck',
-        DateRequested: '12/12/2013',
-        DateDue: '12/12/2020',
-        Status: 'Pending',
-        Comments: 'there are no comments',
-        },
-        {
-          Ref: '11',
-          RelatedSystem: 'Application B',
-          RelatedControl: 'MS-01',
-          ControlName: 'Admin Access Review',
-          DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
-          + 'communicated to employees and/or accessible via a central repository',
-          TypeofEvidence: 'Manual',
-          Owner: 'Tom Brady',
-          DateRequested: '12/12/2014',
-          DateDue: '1/13/2020',
-          Status: 'Pending',
-          Comments: 'there are no comments',
-        },
-       {
-          Ref: '13',
-          RelatedSystem: 'Application C',
-          RelatedControl: 'IT ELC-05',
-          ControlName: 'Change Testing, Change Request Aapproval, Change Migration Approval ',
-          DocumentRequest: 'System generated listing of users with access to modify the frequency of Application A batch jobs.',
-          TypeofEvidence: 'System-generated',
-          Owner: 'Peyton Manning',
-          DateRequested: '12/12/2016',
-          DateDue: '2/12/2020',
-          Status: 'Pending',
-          Comments: 'there are no comments',
-       },
-        {
-          Ref: '14',
-          RelatedSystem: 'Application A, Application B, Application C',
-          RelatedControl: 'MC-05',
-          ControlName: 'Emergency Changes',
-          DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
-          + 'communicated to employees and/or accessible via a central repository',
-          TypeofEvidence: 'System-generated',
-          Owner: 'Eli Manning',
-          DateRequested: '12/12/2017',
-          DateDue: '12/2/2020',
-          Status: 'Pending',
-          Comments: 'there are no comments',
-        },
-      ];
+          },
+          {
+            Ref: '11',
+            RelatedSystem: 'Application B',
+            RelatedControl: 'MS-01',
+            ControlName: 'Admin Access Review',
+            DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
+            + 'communicated to employees and/or accessible via a central repository',
+            TypeofEvidence: 'Manual',
+            Owner: 'Tom Brady',
+            DateRequested: '12/12/2014',
+            DateDue: '1/13/2020',
+            Status: 'Pending',
+            Comments: 'there are no comments',
+          },
+         {
+            Ref: '13',
+            RelatedSystem: 'Application C',
+            RelatedControl: 'IT ELC-05',
+            ControlName: 'Change Testing, Change Request Aapproval, Change Migration Approval ',
+            DocumentRequest: 'System generated listing of users with access to modify the frequency of Application A batch jobs.',
+            TypeofEvidence: 'System-generated',
+            Owner: 'Peyton Manning',
+            DateRequested: '12/12/2016',
+            DateDue: '2/12/2020',
+            Status: 'Pending',
+            Comments: 'there are no comments',
+         },
+          {
+            Ref: '14',
+            RelatedSystem: 'Application A, Application B, Application C',
+            RelatedControl: 'MC-05',
+            ControlName: 'Emergency Changes',
+            DocumentRequest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
+            + 'communicated to employees and/or accessible via a central repository',
+            TypeofEvidence: 'System-generated',
+            Owner: 'Eli Manning',
+            DateRequested: '12/12/2017',
+            DateDue: '12/2/2020',
+            Status: 'Pending',
+            Comments: 'there are no comments',
+          },
+        ];
+
+
+
+      
+
+
+
+
     } else {
-      this.dropdownText = 'FinTech';
+      this.dropdownText = 'Audit Template';
       this.docRequestlist = [
         {
           Ref: '10',
