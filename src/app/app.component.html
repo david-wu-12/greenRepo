@@ -2,9 +2,9 @@
         <!-- A sidebar -->
         <ng-sidebar [(opened)]="_opened" [mode]="mode_var" [closeOnClickOutside]="true">
                 <div class="demo-sidebar border ml-3" aria-hidden="false" aria-label="My sidebar" style="width:350px; height:100%">
-                        <p (click)="goToLaunchpad()">Launchpad</p>
+                        <p (click)="goToLaunchpad()">Dashboard</p>
                         <p>Planning</p>
-                        <p *ngIf="dontShow" (click)="goToDocReq()">Generate Document Request List</p>
+                        <p *ngIf="dontShow" (click)="goToDocReq()">Document Request List Template</p>
                         <p (click)="goToFieldwork()">Fieldwork</p>
                         <p>Reporting</p>
                         <hr>

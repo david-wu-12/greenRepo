@@ -12,34 +12,46 @@ export class HeaderComponent implements OnInit, OnDestroy {
   routerSub: any;
   headerText: any;
   innerWidth: any;
+  imgType: any;
   constructor(private actRoute: Router) { }
 
   ngOnInit() {
     this.innerWidth = (window.screen.width) + 'px';
+    this.headerText = 'IT Audit Dashboard';
     this.routerSub = this.actRoute.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.url;
         console.log(url);
         switch (url) {
           case '/docreq': {
-            this.headerText = 'Document Request List';
+            this.headerText = 'Document Request List Template';
             break;
           }
           case '/entrypage': {
-             this.headerText = 'IT Audit Launchpad';
+             this.headerText = 'IT Audit Dashboard';
              break;
           }
           case '/fieldwork': {
              this.headerText = 'Fieldwork';
              break;
           }
+          case '/viewdocreq': {
+            this.headerText = 'View Document Request List';
+            break;
+         }
           default: {
-            this.headerText = 'IT Audit Launchpad';
+            this.headerText = 'IT Audit Dashboard';
             break;
           }
        }
       }
   });
+    if (this.loggedinUser === 'Admin' ) {
+        this.imgType = '../assets/pro.png';
+    } else {
+      this.imgType = '../assets/ZCA.png';
+    }
+
   }
 
   toggleSidebar() {

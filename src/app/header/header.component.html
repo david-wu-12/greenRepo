@@ -2,8 +2,8 @@
  
     <div class="row mr-1 ml-1">
         <div class="mt-2 col-4">   
-                <div class="mb-3 ml-3" ><h3 class="mb-0 mt-3" style="word-wrap: normal">IT Audit Process for Zero Carbon Autoworks</h3></div>
-                <button class="btn btn-primary ml-3" (click)="toggleSidebar()">View Process</button>
+                <div class="mb-3 ml-3" ><h3 class="mb-0 mt-3" style="word-wrap: normal">Project Site</h3></div>
+                <button class="btn btn-primary ml-3" (click)="toggleSidebar()">Project Activites</button>
         </div>
         
         <div class="mt-2 col-4" style="text-align: center">   
@@ -12,7 +12,7 @@
         
         <div class="mt-2 col-4 pl-0" >   
                 <div style="text-align: right">
-                        <img src="../assets/ZCA.png" alt="Smiley face" height="100" width="440px">
+                        <img [src]="imgType" alt="Smiley face" height="100" width="320px">
                 </div>
                 <div style="text-align: right" class="mt-3">
                         <div>Logged in as:<span class="ml-2"><strong>{{loggedinUser}}</strong></span></div>

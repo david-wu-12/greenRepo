@@ -223,9 +223,9 @@ export class DocreqComponent implements OnInit, OnDestroy {
   }
 
   checkRequest (requestType) {
-    if (requestType === 'IT') {
-      this.dropdownText = 'IT';
-      this.docRequestlist = [
+
+    this.dropdownText = requestType;
+    this.docRequestlist = [
         {
           Ref: '10',
           RelatedSystem: 'AD',
@@ -310,53 +310,26 @@ export class DocreqComponent implements OnInit, OnDestroy {
 
         },
       ];
-      if (this.showUpDoc) {
-        this.docRequestlist[0].DateUp = '4/6/2018';
-        this.docRequestlist[0].ShowDocc = true;
-      }
-    } else {
-      this.dropdownText = 'FinTech';
-      this.docRequestlist = [
-        {
-          Ref: '11010',
-          RelatedSystem: 'AD',
-          RelatedControl: 'IT ELC-0123211',
-          ControlName: 'IT POLICIES',
-          DocumentReuqest: 'System generated list of all users with access to AD,' +
-           ' including all attributes listed in the embedded comments of this cell.' +
-          'Please include the query or screenshot used to generate the list',
+
+      if (requestType.includes('IT') ) {
+        this.docRequestlist.push(        {
+          Ref: '14',
+          RelatedSystem: 'Application A, Application B, Application C',
+          RelatedControl: 'MC-05',
+          ControlName: 'Emergency Changes',
+          DocumentReuqest: 'Evidence that the Culligan Corporate Security Policies and Procedures are'
+          + 'communicated to employees and/or accessible via a central repository',
           TypeofEvidence: 'System-generated',
-          Owner: 'Dwayne Johnson',
-          DateRequested: '12/12/2012',
-          DateDue: '1/12/2020',
+          Owner: '',
+          DateRequested: '',
+          DateDue: '',
           Status: 'Pending',
           DateUp: 'N/A',
-          Comments: 'there are no comments',
+          Comments: '',
           ShowDocc: false
 
-       },
-       {
-        Ref: '100',
-        RelatedSystem: 'Application A',
-        RelatedControl: 'IT ELC-02',
-        ControlName: 'User Access Review',
-        DocumentReuqest: 'SOC1 reviews providing coverage over 20xx for all applicable service providers',
-        TypeofEvidence: 'System-generated',
-        Owner: 'Mark Zuck',
-        DateRequested: '12/12/2013',
-        DateDue: '12/12/2020',
-        Status: 'Verification In Progress',
-        DateUp: '4/20/2018',
-        Comments: 'there are no comments',
-        ShowDocc: false
-
-        }
-      ];
-      if (this.showUpDoc) {
-        this.docRequestlist[0].DateUp = '4/6/2018';
-        this.docRequestlist[0].ShowDocc = true;
+        });
       }
-    }
   }
 
   storeDocument() {
